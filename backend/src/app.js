@@ -16,7 +16,9 @@ const createApp = () => {
 
 	app.use(cors(
 		{
-			origin: "http://localhost:5173",
+			origin: ["http://localhost:5173",
+				"https://razorpay-work.vercel.app"
+			],
 			credentials: true,
 		}
 	));
