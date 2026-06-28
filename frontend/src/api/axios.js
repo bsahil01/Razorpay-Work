@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://localhost:7002",
+    baseURL: "https://razorpay-work-production.up.railway.app",,
     withCredentials: true,
 });
 
