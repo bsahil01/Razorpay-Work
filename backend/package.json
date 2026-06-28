@@ -13,6 +13,7 @@
     "db:seed-data": "node src/db/seed.js"
   },
   "dependencies": {
+    "axios": "^1.18.1",
     "bcrypt": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
@@ -23,6 +24,7 @@
     "jsonwebtoken": "^9.0.3",
     "morgan": "^1.11.0",
     "pg": "^8.22.0",
+    "react-router-dom": "^7.18.0",
     "winston": "^3.19.0",
     "zod": "^4.4.3"
   },

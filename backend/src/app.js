@@ -14,7 +14,12 @@ import reimbursementsRoutes from './app/reimbursements/reimbursements.routes.js'
 const createApp = () => {
 	const app = express();
 
-	app.use(cors());
+	app.use(cors(
+		{
+			origin: "http://localhost:5173",
+			credentials: true,
+		}
+	));
 	app.use(helmet());
 	app.use(morgan('combined', { stream: { write: (msg) => logger.info(msg.trim()) } }));
 	app.use(express.json());
