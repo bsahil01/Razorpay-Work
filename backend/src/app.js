@@ -13,6 +13,7 @@ import reimbursementsRoutes from './app/reimbursements/reimbursements.routes.js'
 
 const createApp = () => {
 	const app = express();
+	app.set("trust proxy", 1);
 
 	app.use(cors(
 		{

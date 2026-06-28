@@ -3,9 +3,18 @@ import '../config/env.config.js';
 import AppError from '../utils/AppError.js';
 
 export const auth = (req, res, next) => {
-	const token = req.cookies?.auth || req.cookies?.token;
+	let token = null;
+
+	const bearer = req.headers.authorization;
+
+	if (bearer && bearer.startsWith("Bearer ")) {
+		token = bearer.substring(7);
+	} else {
+		token = req.cookies?.auth || req.cookies?.token;
+	}
+
 	if (!token) {
-		throw new AppError('Authentication token missing', 401);
+		throw new AppError("Authentication token missing", 401);
 	}
 	try {
 		const decoded = jwt.verify(token, process.env.JWT_SECRET);

@@ -6,7 +6,8 @@ import { logoutUser, loginUser, registerUser } from './onboardings.service.js';
 
 const authCookieOptions = {
 	httpOnly: true,
-	sameSite: 'strict',
+	secure: true,
+	sameSite: 'none',
 };
 
 export const registerController = asyncHandler(async (req, res) => {
@@ -34,8 +35,12 @@ export const loginController = asyncHandler(async (req, res) => {
 	try {
 		const { token, user } = await loginUser(req.body);
 
-		res.cookie('auth', token, authCookieOptions);
-		res.status(200).json(new ApiSuccessResponse('Login successful', { user }));
+		return res.status(200).json(
+			new ApiSuccessResponse("Login successful", {
+				user,
+				token,
+			})
+    );
 	} catch (error) {
 		logger.error(`loginController error: ${error?.message || error}`);
 		throw error;
