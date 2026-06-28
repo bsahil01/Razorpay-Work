@@ -16,7 +16,7 @@ const start = async () => {
 
 	const app = createApp();
 
-	const PORT = 7002;
+	const PORT = process.env.PORT || 7002;
 	app.listen(PORT, () => {
 		logger.info(`Server listening on port ${PORT}`);
 	});
