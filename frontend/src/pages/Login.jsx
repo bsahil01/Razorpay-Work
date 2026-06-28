@@ -17,6 +17,7 @@ export default function Login() {
       const res = await api.post("/rest/onboardings/login", { email, password });
       const user = res.data.data.user;
       localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("token", token);
       navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed. Please check your credentials.");
